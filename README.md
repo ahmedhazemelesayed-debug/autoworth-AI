@@ -13,55 +13,57 @@ Deal Rating:            🟢 Good Deal
 
 | | |
 |---|---|
-| Final model | HistGradientBoosting (XGBoost stand-in) (tuned) |
-| **Test R²** | **0.968** |
-| **Test MAE** | **£1,094** |
-| Test RMSE | £1,773 |
-| Typical error | median ≈ £713 (≈ 5% of the price) |
+| Final model | XGBoost (tuned) |
+| **Test R²** | **0.967** |
+| **Test MAE** | **£1,114** |
+| Test RMSE | £1,807 |
+| Typical error | ≈ 5% of the car's price (median % error in every price band) |
 
 Validation comparison of the five models (all trained on `log(1+price)`, metrics in £):
 
 | Model | R² | MAE | RMSE |
 |---|---|---|---|
 | Linear Regression | 0.924 | £1,599 | £2,740 |
-| Decision Tree | 0.920 | £1,472 | £2,799 |
-| Random Forest | 0.957 | £1,139 | £2,046 |
-| Gradient Boosting | 0.937 | £1,489 | £2,484 |
-| HistGradientBoosting (XGBoost stand-in) | 0.958 | £1,149 | £2,025 |
+| Decision Tree | 0.930 | £1,468 | £2,622 |
+| Random Forest | 0.957 | £1,139 | £2,045 |
+| Gradient Boosting | 0.937 | £1,490 | £2,493 |
+| XGBoost | 0.961 | £1,122 | £1,964 |
 
-> The 5th model in the saved results is scikit-learn's `HistGradientBoostingRegressor`, used automatically when `xgboost` is not installed. With `pip install xgboost` (pre-installed on Google Colab) the notebook uses **XGBoost** instead and its numbers will differ slightly.
+Tuning (RandomizedSearchCV, 8 candidates × 3-fold CV): validation R² 0.9607 → 0.9608, MAE £1,122 → £1,117. The gain is small: the default XGBoost was already well configured. Best parameters: subsample: 1.0, n_estimators: 800, min_child_weight: 3, max_depth: 10, learning_rate: 0.03, colsample_bytree: 0.6.
 
-Top features (permutation importance): 
+Overfitting check: the Decision Tree overfits (train R² 0.9996 vs validation 0.930); XGBoost generalises well (gap 0.015).
+
+Top features (permutation importance):
 
 | Feature | Importance (drop in R²) |
 |---|---|
-| `car_age` | 0.251 |
-| `engine_mpg_ratio` | 0.138 |
-| `engineSize` | 0.125 |
-| `is_premium_brand` | 0.110 |
-| `transmission` | 0.106 |
-| `model` | 0.073 |
-| `mpg` | 0.065 |
-| `mileage` | 0.047 |
+| `car_age` | 0.188 |
+| `engine_mpg_ratio` | 0.126 |
+| `engineSize` | 0.119 |
+| `mileage` | 0.102 |
+| `transmission` | 0.087 |
+| `is_premium_brand` | 0.077 |
+| `model` | 0.066 |
+| `mpg` | 0.059 |
 
 ## Pipeline
 
-1. **Load** 9 manufacturer files, add a `Make` column to each *before* combining (99,187 rows).
+1. **Load** the 9 manufacturer files, add a `Make` column to each *before* combining (99,187 rows).
 2. **Combine** — fix Hyundai's `tax(£)` column and leading spaces in model names.
-3. **Clean** (each decision explained in the notebook): 1,475 duplicates removed; 3 impossible years (2060, 1970) dropped; 265 engine sizes of 0 on non-electric cars → missing → imputed from the training set; mpg clipped to [10, 150]; price and mileage extremes investigated and kept. → 97,709 rows.
+3. **Clean** (each decision is explained in the notebook): 1,475 duplicates removed; 3 impossible years (2060, 1970) dropped; 265 engine sizes of 0 on non-electric cars → missing → imputed from the training set; mpg clipped to [10, 150]; price and mileage extremes investigated and kept → 97,709 rows.
 4. **EDA** — 7 visualisations, each with a written conclusion.
-5. **Split** 70 / 15 / 15 (train / validation / test); test set used once.
+5. **Split** 70 / 15 / 15 (train / validation / test); the test set is used once.
 6. **Feature engineering** — `car_age` (reference year 2020), `mileage_per_year` (safe for age 0), `is_premium_brand`, `engine_mpg_ratio`, `engine_missing`.
 7. **Preprocessing** — median imputation + scaling for numbers, One-Hot Encoding for categories, **fitted on the training set only**.
-8. **Models** — Linear Regression, Decision Tree, Random Forest, Gradient Boosting, XGBoost (or HistGradientBoosting).
-9. **Evaluation** — R², MAE, RMSE; **overfitting check** (train vs validation).
-10. **Tuning** — RandomizedSearchCV (3-fold CV, preprocessing inside the pipeline).
+8. **Models** — Linear Regression, Decision Tree, Random Forest, Gradient Boosting, XGBoost.
+9. **Evaluation** — R², MAE, RMSE, plus the overfitting check (train vs validation).
+10. **Tuning** — RandomizedSearchCV (preprocessing inside the pipeline, so there is no leakage in CV).
 11. **Final model** chosen on validation, evaluated **once** on the test set.
 12. **Model understanding** — actual vs predicted, feature importance, error analysis, what-if on age and mileage.
 13. **Smart Deal Advisor** — 🟢 Great (>10% cheaper), 🟢 Good (5–10%), 🟡 Fair (±5%), 🟠 Slightly overpriced (5–10%), 🔴 Overpriced (>10%).
 14. **Streamlit app**.
 
-On the real test listings the advisor rates 49% as fair, 25% as good/great deals and 26% as overpriced.
+On the real test listings the advisor rates 48% as fair, 26% as good/great deals and 26% as overpriced.
 
 ## Repository structure
 
@@ -79,20 +81,21 @@ On the real test listings the advisor rates 49% as fair, 25% as good/great deals
 
 ## How to run
 
-**Google Colab:** upload `AutoWorth_AI.ipynb` (and the `data/` folder or the dataset zip when asked) → *Runtime → Run all*. Training and tuning take about 10–15 minutes.
+**Google Colab:** open `AutoWorth_AI.ipynb` in Colab, set `GITHUB_USER` in the first code cell, then *Runtime → Run all* (about 10–15 minutes). If you did not upload the repo, the notebook asks you to upload the dataset zip instead.
 
 **Locally:**
 ```bash
 pip install -r requirements.txt
 streamlit run app.py
 ```
-Open the notebook with Jupyter to re-train and regenerate `models/autoworth_model.joblib`.
+Re-run the notebook to regenerate `models/autoworth_model.joblib`.
 
 ## Limitations
 
-* Data was scraped in 2020 — today's prices differ; UK market, nine makes only.
+* The data was scraped in 2020 — today's prices differ; UK market, nine makes only.
 * No trim level, condition, options, service history or location in the data; rare expensive cars (G-Class, R8, Mustang) have the largest £ errors.
 * The app fills `tax` and `mpg` with typical values when the user does not enter them.
+* Cars with an imputed engine size can be badly mispredicted (e.g. one BMW X5 at −49%).
 
 ## Dataset
 

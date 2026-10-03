@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 """AutoWorth AI - Streamlit app.  Run:  streamlit run app.py"""
+import os
 import joblib
 import streamlit as st
 from autoworth_core import predict_price, rate_deal
@@ -9,7 +10,11 @@ st.set_page_config(page_title="AutoWorth AI", page_icon="🚗", layout="centered
 
 @st.cache_resource
 def load_bundle():
-    return joblib.load("models/autoworth_model.joblib")
+    # works whether the model sits in a models/ folder or next to app.py
+    for path in ("models/autoworth_model.joblib", "autoworth_model.joblib"):
+        if os.path.exists(path):
+            return joblib.load(path)
+    raise FileNotFoundError("autoworth_model.joblib not found - upload it to the repository.")
 
 
 bundle = load_bundle()
