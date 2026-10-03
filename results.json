@@ -10,234 +10,235 @@
   "validation_comparison": {
     "Linear Regression": {
       "R2": 0.9235530487398659,
-      "MAE": 1599.3782148490197,
-      "RMSE": 2739.6921341468897
+      "MAE": 1599.3782148490195,
+      "RMSE": 2739.6921341468906
     },
     "Decision Tree": {
-      "R2": 0.9202178498150781,
-      "MAE": 1472.4405779493097,
-      "RMSE": 2798.8172765275726
+      "R2": 0.9299624155843645,
+      "MAE": 1468.1274029332037,
+      "RMSE": 2622.3294794129147
     },
     "Random Forest": {
-      "R2": 0.9573637339959773,
-      "MAE": 1139.3111904397626,
-      "RMSE": 2046.0265230520044
+      "R2": 0.9574253778319832,
+      "MAE": 1139.2313034849105,
+      "RMSE": 2044.546907734418
     },
     "Gradient Boosting": {
-      "R2": 0.9371403241417555,
-      "MAE": 1489.3263669534424,
-      "RMSE": 2484.3212050884376
+      "R2": 0.9366975418869358,
+      "MAE": 1489.8861478942779,
+      "RMSE": 2493.0556044049213
     },
-    "HistGradientBoosting (XGBoost stand-in)": {
-      "R2": 0.9582433038412053,
-      "MAE": 1148.800281036858,
-      "RMSE": 2024.8121699376234
+    "XGBoost": {
+      "R2": 0.960696816444397,
+      "MAE": 1122.37548828125,
+      "RMSE": 1964.4260612199178
     }
   },
   "overfitting": {
     "Linear Regression": {
       "Train R\u00b2": 0.9194453720846901,
       "Validation R\u00b2": 0.9235530487398659,
-      "Train MAE (\u00a3)": 1603.851911460252,
-      "Validation MAE (\u00a3)": 1599.3782148490197,
+      "Train MAE (\u00a3)": 1603.8519114602516,
+      "Validation MAE (\u00a3)": 1599.3782148490195,
       "R\u00b2 gap": -0.0041076766551757515
     },
     "Decision Tree": {
       "Train R\u00b2": 0.9995950425821258,
-      "Validation R\u00b2": 0.9202178498150781,
-      "Train MAE (\u00a3)": 19.112022569495828,
-      "Validation MAE (\u00a3)": 1472.4405779493097,
-      "R\u00b2 gap": 0.07937719276704769
+      "Validation R\u00b2": 0.9299624155843645,
+      "Train MAE (\u00a3)": 19.11202256949581,
+      "Validation MAE (\u00a3)": 1468.1274029332037,
+      "R\u00b2 gap": 0.0696326269977613
     },
     "Random Forest": {
-      "Train R\u00b2": 0.9813670009965986,
-      "Validation R\u00b2": 0.9573637339959773,
-      "Train MAE (\u00a3)": 723.8448166461833,
-      "Validation MAE (\u00a3)": 1139.3111904397626,
-      "R\u00b2 gap": 0.024003267000621276
+      "Train R\u00b2": 0.9814710244979968,
+      "Validation R\u00b2": 0.9574253778319832,
+      "Train MAE (\u00a3)": 723.0426603166915,
+      "Validation MAE (\u00a3)": 1139.2313034849105,
+      "R\u00b2 gap": 0.02404564666601361
     },
     "Gradient Boosting": {
-      "Train R\u00b2": 0.943221300391714,
-      "Validation R\u00b2": 0.9371403241417555,
-      "Train MAE (\u00a3)": 1452.1649500371723,
-      "Validation MAE (\u00a3)": 1489.3263669534424,
-      "R\u00b2 gap": 0.006080976249958514
+      "Train R\u00b2": 0.9427747580943446,
+      "Validation R\u00b2": 0.9366975418869358,
+      "Train MAE (\u00a3)": 1453.2702113090959,
+      "Validation MAE (\u00a3)": 1489.8861478942779,
+      "R\u00b2 gap": 0.006077216207408864
     },
-    "HistGradientBoosting (XGBoost stand-in)": {
-      "Train R\u00b2": 0.9694733355042823,
-      "Validation R\u00b2": 0.9582433038412053,
-      "Train MAE (\u00a3)": 1037.1910509467127,
-      "Validation MAE (\u00a3)": 1148.800281036858,
-      "R\u00b2 gap": 0.011230031663077011
+    "XGBoost": {
+      "Train R\u00b2": 0.9757493734359741,
+      "Validation R\u00b2": 0.960696816444397,
+      "Train MAE (\u00a3)": 963.1087036132812,
+      "Validation MAE (\u00a3)": 1122.37548828125,
+      "R\u00b2 gap": 0.015052556991577148
     }
   },
   "tuning": {
     "best_params": {
-      "min_samples_leaf": 10,
-      "max_leaf_nodes": 127,
-      "max_iter": 500,
-      "learning_rate": 0.15,
-      "l2_regularization": 0.0
+      "subsample": 1.0,
+      "n_estimators": 800,
+      "min_child_weight": 3,
+      "max_depth": 10,
+      "learning_rate": 0.03,
+      "colsample_bytree": 0.6
     },
-    "cv_r2": 0.9583534006490947,
+    "cv_r2": 0.9598700602849325,
     "before": {
-      "R2": 0.9582433038412053,
-      "MAE": 1148.800281036858,
-      "RMSE": 2024.8121699376234
+      "R2": 0.960696816444397,
+      "MAE": 1122.37548828125,
+      "RMSE": 1964.4260612199178
     },
     "after": {
-      "R2": 0.9621562211896645,
-      "MAE": 1096.0142856529806,
-      "RMSE": 1927.608911651736
+      "R2": 0.9608167409896851,
+      "MAE": 1116.9493408203125,
+      "RMSE": 1961.4256932139947
     }
   },
-  "final_model": "HistGradientBoosting (XGBoost stand-in) (tuned)",
+  "final_model": "XGBoost (tuned)",
   "test": {
-    "R2": 0.9678228913688411,
-    "MAE": 1094.3818606220887,
-    "RMSE": 1773.3853397059695
+    "R2": 0.9666034579277039,
+    "MAE": 1114.2867431640625,
+    "RMSE": 1806.6765759260843
   },
   "final_table": {
     "Linear Regression": {
       "Train R\u00b2": 0.9194453720846901,
       "Val R\u00b2": 0.9235530487398659,
-      "Val MAE (\u00a3)": 1599.3782148490197,
-      "Val RMSE (\u00a3)": 2739.6921341468897,
+      "Val MAE (\u00a3)": 1599.3782148490195,
+      "Val RMSE (\u00a3)": 2739.6921341468906,
       "R\u00b2 gap": -0.0041076766551757515
     },
     "Decision Tree": {
       "Train R\u00b2": 0.9995950425821258,
-      "Val R\u00b2": 0.9202178498150781,
-      "Val MAE (\u00a3)": 1472.4405779493097,
-      "Val RMSE (\u00a3)": 2798.8172765275726,
-      "R\u00b2 gap": 0.07937719276704769
+      "Val R\u00b2": 0.9299624155843645,
+      "Val MAE (\u00a3)": 1468.1274029332037,
+      "Val RMSE (\u00a3)": 2622.3294794129147,
+      "R\u00b2 gap": 0.0696326269977613
     },
     "Random Forest": {
-      "Train R\u00b2": 0.9813670009965986,
-      "Val R\u00b2": 0.9573637339959773,
-      "Val MAE (\u00a3)": 1139.3111904397626,
-      "Val RMSE (\u00a3)": 2046.0265230520044,
-      "R\u00b2 gap": 0.024003267000621276
+      "Train R\u00b2": 0.9814710244979968,
+      "Val R\u00b2": 0.9574253778319832,
+      "Val MAE (\u00a3)": 1139.2313034849105,
+      "Val RMSE (\u00a3)": 2044.546907734418,
+      "R\u00b2 gap": 0.02404564666601361
     },
     "Gradient Boosting": {
-      "Train R\u00b2": 0.943221300391714,
-      "Val R\u00b2": 0.9371403241417555,
-      "Val MAE (\u00a3)": 1489.3263669534424,
-      "Val RMSE (\u00a3)": 2484.3212050884376,
-      "R\u00b2 gap": 0.006080976249958514
+      "Train R\u00b2": 0.9427747580943446,
+      "Val R\u00b2": 0.9366975418869358,
+      "Val MAE (\u00a3)": 1489.8861478942779,
+      "Val RMSE (\u00a3)": 2493.0556044049213,
+      "R\u00b2 gap": 0.006077216207408864
     },
-    "HistGradientBoosting (XGBoost stand-in)": {
-      "Train R\u00b2": 0.9694733355042823,
-      "Val R\u00b2": 0.9582433038412053,
-      "Val MAE (\u00a3)": 1148.800281036858,
-      "Val RMSE (\u00a3)": 2024.8121699376234,
-      "R\u00b2 gap": 0.011230031663077011
+    "XGBoost": {
+      "Train R\u00b2": 0.9757493734359741,
+      "Val R\u00b2": 0.960696816444397,
+      "Val MAE (\u00a3)": 1122.37548828125,
+      "Val RMSE (\u00a3)": 1964.4260612199178,
+      "R\u00b2 gap": 0.015052556991577148
     },
-    "HistGradientBoosting (XGBoost stand-in) (tuned)": {
-      "Train R\u00b2": 0.9775848845925407,
-      "Val R\u00b2": 0.9621562211896645,
-      "Val MAE (\u00a3)": 1096.0142856529806,
-      "Val RMSE (\u00a3)": 1927.608911651736,
-      "R\u00b2 gap": 0.015428663402876186
+    "XGBoost (tuned)": {
+      "Train R\u00b2": 0.975938081741333,
+      "Val R\u00b2": 0.9608167409896851,
+      "Val MAE (\u00a3)": 1116.9493408203125,
+      "Val RMSE (\u00a3)": 1961.4256932139947,
+      "R\u00b2 gap": 0.01512134075164795
     }
   },
   "feature_importance": {
-    "car_age": 0.25121972199848686,
-    "engine_mpg_ratio": 0.13782531296992515,
-    "engineSize": 0.12515134063782393,
-    "is_premium_brand": 0.1101363853070676,
-    "transmission": 0.10616106141867887,
-    "model": 0.07326964960342615,
-    "mpg": 0.06537485816457138,
-    "mileage": 0.047098465579865634,
-    "Make": 0.027049341298825896,
-    "fuelType": 0.014434558696360974,
-    "tax": 0.005899608006355472,
-    "mileage_per_year": 0.005622756367083204,
-    "engine_missing": 0.00011866122870444566
+    "car_age": 0.18805837631225586,
+    "engine_mpg_ratio": 0.12613064050674438,
+    "engineSize": 0.11939134200414021,
+    "mileage": 0.10156852006912231,
+    "transmission": 0.08693931500116985,
+    "is_premium_brand": 0.07727684577306111,
+    "model": 0.06582864125569661,
+    "mpg": 0.05936628580093384,
+    "Make": 0.026680866877237957,
+    "fuelType": 0.012532273928324381,
+    "tax": 0.008462011814117432,
+    "mileage_per_year": 0.005045612653096517,
+    "engine_missing": -9.5367431640625e-07
   },
   "error_by_make": {
     "Vauxhall": {
-      "MAE": 684.6,
-      "median_pct_err": 5.4,
+      "MAE": 671.0,
+      "median_pct_err": 5.3,
       "cars": 1992
     },
     "Toyota": {
-      "MAE": 789.9,
-      "median_pct_err": 4.9,
+      "MAE": 784.4,
+      "median_pct_err": 4.8,
       "cars": 970
     },
     "Hyundai": {
-      "MAE": 805.3,
-      "median_pct_err": 5.0,
+      "MAE": 800.2,
+      "median_pct_err": 4.9,
       "cars": 719
     },
     "Ford": {
-      "MAE": 826.1,
-      "median_pct_err": 5.4,
+      "MAE": 828.8,
+      "median_pct_err": 5.5,
       "cars": 2749
     },
     "Skoda": {
-      "MAE": 922.6,
+      "MAE": 913.3,
       "median_pct_err": 5.4,
       "cars": 907
     },
     "Volkswagen": {
-      "MAE": 1065.2,
-      "median_pct_err": 4.8,
+      "MAE": 1088.7,
+      "median_pct_err": 4.9,
       "cars": 2212
     },
     "BMW": {
-      "MAE": 1513.2,
-      "median_pct_err": 5.3,
+      "MAE": 1535.9,
+      "median_pct_err": 5.2,
       "cars": 1621
     },
     "Audi": {
-      "MAE": 1533.4,
+      "MAE": 1563.3,
       "median_pct_err": 5.5,
       "cars": 1553
     },
     "Mercedes": {
-      "MAE": 1568.4,
-      "median_pct_err": 4.8,
+      "MAE": 1668.5,
+      "median_pct_err": 5.2,
       "cars": 1934
     }
   },
   "error_by_band": {
     "<8k": {
-      "MAE": 540.8,
-      "median_pct_err": 6.4
+      "MAE": 531.9,
+      "median_pct_err": 6.3
     },
     "8-15k": {
-      "MAE": 729.4,
+      "MAE": 729.7,
       "median_pct_err": 5.0
     },
     "15-25k": {
-      "MAE": 1212.0,
-      "median_pct_err": 4.9
+      "MAE": 1244.1,
+      "median_pct_err": 5.0
     },
     "25-40k": {
-      "MAE": 1970.4,
+      "MAE": 2040.9,
       "median_pct_err": 5.2
     },
     ">40k": {
-      "MAE": 3956.2,
-      "median_pct_err": 4.8
+      "MAE": 4045.3,
+      "median_pct_err": 5.2
     }
   },
   "worst_errors": [
     {
       "Make": "Mercedes",
       "model": "G Class",
-      "year": "2020",
-      "mileage": "3000",
-      "engineSize": "4.0",
+      "year": "2015",
+      "mileage": "10000",
+      "engineSize": "5.5",
       "fuelType": "Petrol",
-      "transmission": "Automatic",
-      "Actual": "154998",
-      "Predicted": "126509.0",
-      "Error (\u00a3)": "-28489.0",
-      "Error (%)": "-18.4"
+      "transmission": "Semi-Auto",
+      "Actual": "99850",
+      "Predicted": "64619.0",
+      "Error (\u00a3)": "-35231.0",
+      "Error (%)": "-35.3"
     },
     {
       "Make": "Audi",
@@ -248,9 +249,9 @@
       "fuelType": "Petrol",
       "transmission": "Automatic",
       "Actual": "125000",
-      "Predicted": "97621.0",
-      "Error (\u00a3)": "-27379.0",
-      "Error (%)": "-21.9"
+      "Predicted": "101151.0",
+      "Error (\u00a3)": "-23849.0",
+      "Error (%)": "-19.1"
     },
     {
       "Make": "Ford",
@@ -261,9 +262,35 @@
       "fuelType": "Petrol",
       "transmission": "Manual",
       "Actual": "49999",
-      "Predicted": "27922.0",
-      "Error (\u00a3)": "-22077.0",
-      "Error (%)": "-44.2"
+      "Predicted": "26413.0",
+      "Error (\u00a3)": "-23586.0",
+      "Error (%)": "-47.2"
+    },
+    {
+      "Make": "BMW",
+      "model": "X5",
+      "year": "2016",
+      "mileage": "49000",
+      "engineSize": "nan",
+      "fuelType": "Petrol",
+      "transmission": "Automatic",
+      "Actual": "39948",
+      "Predicted": "20378.0",
+      "Error (\u00a3)": "-19570.0",
+      "Error (%)": "-49.0"
+    },
+    {
+      "Make": "Mercedes",
+      "model": "A Class",
+      "year": "2019",
+      "mileage": "1000",
+      "engineSize": "4.0",
+      "fuelType": "Petrol",
+      "transmission": "Semi-Auto",
+      "Actual": "134219",
+      "Predicted": "114905.0",
+      "Error (\u00a3)": "-19314.0",
+      "Error (%)": "-14.4"
     },
     {
       "Make": "Audi",
@@ -274,112 +301,86 @@
       "fuelType": "Diesel",
       "transmission": "Semi-Auto",
       "Actual": "12500",
-      "Predicted": "32966.0",
-      "Error (\u00a3)": "20466.0",
-      "Error (%)": "163.7"
+      "Predicted": "31796.0",
+      "Error (\u00a3)": "19296.0",
+      "Error (%)": "154.4"
     },
     {
-      "Make": "Volkswagen",
-      "model": "Touareg",
-      "year": "2018",
-      "mileage": "10000",
-      "engineSize": "3.0",
-      "fuelType": "Diesel",
+      "Make": "Ford",
+      "model": "Mustang",
+      "year": "2017",
+      "mileage": "7546",
+      "engineSize": "5.0",
+      "fuelType": "Petrol",
       "transmission": "Automatic",
-      "Actual": "57295",
-      "Predicted": "38106.0",
-      "Error (\u00a3)": "-19189.0",
-      "Error (%)": "-33.5"
-    },
-    {
-      "Make": "Mercedes",
-      "model": "GLE Class",
-      "year": "2016",
-      "mileage": "77456",
-      "engineSize": "3.0",
-      "fuelType": "Diesel",
-      "transmission": "Semi-Auto",
-      "Actual": "7750",
-      "Predicted": "26673.0",
-      "Error (\u00a3)": "18923.0",
-      "Error (%)": "244.2"
+      "Actual": "48999",
+      "Predicted": "29765.0",
+      "Error (\u00a3)": "-19234.0",
+      "Error (%)": "-39.3"
     },
     {
       "Make": "Audi",
-      "model": "A5",
-      "year": "2020",
-      "mileage": "2000",
-      "engineSize": "3.0",
-      "fuelType": "Diesel",
-      "transmission": "Semi-Auto",
-      "Actual": "59995",
-      "Predicted": "41232.0",
-      "Error (\u00a3)": "-18763.0",
-      "Error (%)": "-31.3"
-    },
-    {
-      "Make": "Mercedes",
-      "model": "GLE Class",
-      "year": "2018",
-      "mileage": "5234",
-      "engineSize": "5.5",
+      "model": "R8",
+      "year": "2019",
+      "mileage": "13663",
+      "engineSize": "5.2",
       "fuelType": "Petrol",
       "transmission": "Automatic",
-      "Actual": "55376",
-      "Predicted": "73790.0",
-      "Error (\u00a3)": "18414.0",
-      "Error (%)": "33.3"
+      "Actual": "125000",
+      "Predicted": "105881.0",
+      "Error (\u00a3)": "-19119.0",
+      "Error (%)": "-15.3"
     }
   ],
   "what_if_age": [
     {
       "car_age": 1,
-      "predicted_price": 13845.0
+      "predicted_price": 14073.0
     },
     {
       "car_age": 3,
-      "predicted_price": 10021.0
+      "predicted_price": 10235.0
     },
     {
       "car_age": 5,
-      "predicted_price": 7717.0
+      "predicted_price": 7638.0
     },
     {
       "car_age": 8,
-      "predicted_price": 5343.0
+      "predicted_price": 5307.0
     },
     {
       "car_age": 12,
-      "predicted_price": 2363.0
+      "predicted_price": 2382.0
     }
   ],
   "what_if_mileage": [
     {
       "mileage": 10000,
-      "predicted_price": 9062.0
+      "predicted_price": 9637.0
     },
     {
       "mileage": 30000,
-      "predicted_price": 8476.0
+      "predicted_price": 8397.0
     },
     {
       "mileage": 60000,
-      "predicted_price": 6824.0
+      "predicted_price": 6981.0
     },
     {
       "mileage": 90000,
-      "predicted_price": 5721.0
+      "predicted_price": 6375.0
     },
     {
       "mileage": 120000,
-      "predicted_price": 5089.0
+      "predicted_price": 5472.0
     }
   ],
   "deal_distribution": {
-    "Great Deal": 9.449409838302518,
-    "Good Deal": 15.664870027972983,
-    "Fair Price": 48.768506515658046,
-    "Slightly Overpriced": 14.409497168588386,
-    "Overpriced": 11.707716449478065
+    "Great Deal": 10.049805553660367,
+    "Good Deal": 15.480657706215462,
+    "Fair Price": 48.4546633008119,
+    "Slightly Overpriced": 14.136590025243912,
+    "Overpriced": 11.878283414068363
   }
 }
